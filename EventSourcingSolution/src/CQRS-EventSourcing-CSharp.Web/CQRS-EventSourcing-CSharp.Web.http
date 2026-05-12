@@ -1,0 +1,6 @@
+@CQRS_EventSourcing_CSharp.Web_HostAddress = http://localhost:5108
+
+GET {{CQRS_EventSourcing_CSharp.Web_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>CQRS_EventSourcing_CSharp.DataAccess</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CQRS-EventSourcing-CSharp.Application\CQRS-EventSourcing-CSharp.Application.csproj" />
+    <ProjectReference Include="..\CQRS-EventSourcing-CSharp.Domain\CQRS-EventSourcing-CSharp.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
