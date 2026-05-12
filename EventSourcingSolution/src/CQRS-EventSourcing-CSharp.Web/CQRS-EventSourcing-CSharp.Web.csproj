@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>CQRS_EventSourcing_CSharp.Web</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CQRS-EventSourcing-CSharp.Application\CQRS-EventSourcing-CSharp.Application.csproj" />
+    <ProjectReference Include="..\CQRS-EventSourcing-CSharp.DataAccess\CQRS-EventSourcing-CSharp.DataAccess.csproj" />
+    <ProjectReference Include="..\CQRS-EventSourcing-CSharp.Domain\CQRS-EventSourcing-CSharp.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

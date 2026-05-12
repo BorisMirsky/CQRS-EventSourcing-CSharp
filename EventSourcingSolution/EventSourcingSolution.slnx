@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/CQRS-EventSourcing-CSharp.Application/CQRS-EventSourcing-CSharp.Application.csproj" Id="169ab937-55f6-4784-a13a-e2a4f1e2f4a3" />
+    <Project Path="src/CQRS-EventSourcing-CSharp.DataAccess/CQRS-EventSourcing-CSharp.DataAccess.csproj" Id="a0f10b54-c071-4e6f-89f4-48f0489cd4b3" />
+    <Project Path="src/CQRS-EventSourcing-CSharp.Domain/CQRS-EventSourcing-CSharp.Domain.csproj" />
+    <Project Path="src/CQRS-EventSourcing-CSharp.Web/CQRS-EventSourcing-CSharp.Web.csproj" Id="a796c035-f464-4923-98b6-9e619389c6d0" />
+  </Folder>
+</Solution>
