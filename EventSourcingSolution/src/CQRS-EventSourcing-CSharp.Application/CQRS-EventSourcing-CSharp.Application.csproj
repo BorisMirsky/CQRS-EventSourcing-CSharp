@@ -11,4 +11,12 @@
     <ProjectReference Include="..\CQRS-EventSourcing-CSharp.Domain\CQRS-EventSourcing-CSharp.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Commands\" />
+    <Folder Include="CommandHandlers\" />
+    <Folder Include="Common\" />
+    <Folder Include="QueryHandlers\" />
+    <Folder Include="Queries\" />
+  </ItemGroup>
+
 </Project>

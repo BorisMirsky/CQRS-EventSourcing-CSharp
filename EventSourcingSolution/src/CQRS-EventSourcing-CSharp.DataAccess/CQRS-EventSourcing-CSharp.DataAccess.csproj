@@ -12,4 +12,11 @@
     <ProjectReference Include="..\CQRS-EventSourcing-CSharp.Domain\CQRS-EventSourcing-CSharp.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="EventStore\" />
+    <Folder Include="DataBase\" />
+    <Folder Include="Projections\" />
+    <Folder Include="ReadModel\" />
+  </ItemGroup>
+
 </Project>
