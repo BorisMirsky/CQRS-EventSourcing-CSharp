@@ -17,4 +17,9 @@
     <ProjectReference Include="..\CQRS-EventSourcing-CSharp.Domain\CQRS-EventSourcing-CSharp.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Middleware\" />
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
 </Project>
