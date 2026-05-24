@@ -13,7 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="EventStore\" />
     <Folder Include="DataBase\" />
     <Folder Include="Projections\" />
     <Folder Include="ReadModel\" />

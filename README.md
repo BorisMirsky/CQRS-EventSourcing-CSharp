@@ -14,3 +14,6 @@ CQRS — архитектурный паттерн для разделения �
 
 
 Event Sourcing и CQRS не обязательно использовать вместе, но в этом проекте они вместе.
+
+Swagger
+http://localhost:5108/swagger/index.html
