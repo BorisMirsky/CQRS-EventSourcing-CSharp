@@ -9,21 +9,23 @@ using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
-
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-
 string connection = builder.Configuration.GetConnectionString("DefaultConnection")!;
 
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<WithdrawMoneyHandler>();
+builder.Services.AddScoped<FreezeAccountHandler>();
+builder.Services.AddScoped<UnfreezeAccountHandler>();
 builder.Services.AddSingleton<IEventStore>(sp => new SqliteEventStore(connection));
 builder.Services.AddScoped<OpenAccountHandler>();
 builder.Services.AddScoped<DepositMoneyHandler>();
 
+
+
 var app = builder.Build();
 
-// Настраиваем pipeline
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -41,15 +43,5 @@ app.UseCors(x =>
 });
 
 app.UseCors();
-
-
 app.MapControllers();
-
-// Создаём БД при старте
-//using (var scope = app.Services.CreateScope())
-//{
-//    var eventStore = scope.ServiceProvider.GetRequiredService<IEventStore>();
-//    // EventStore уже создаёт таблицу в конструкторе через DbSchema.EnsureDatabase
-//}
-
 app.Run();

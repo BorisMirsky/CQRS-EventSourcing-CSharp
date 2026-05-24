@@ -125,6 +125,9 @@ namespace CQRS_EventSourcing_CSharp.DataAccess.EventStore
             {
                 nameof(AccountOpened) => JsonSerializer.Deserialize<AccountOpened>(eventData, _jsonOptions),
                 nameof(MoneyDeposited) => JsonSerializer.Deserialize<MoneyDeposited>(eventData, _jsonOptions),
+                nameof(MoneyWithdrawn) => JsonSerializer.Deserialize<MoneyWithdrawn>(eventData, _jsonOptions),
+                nameof(AccountFrozen) => JsonSerializer.Deserialize<AccountFrozen>(eventData, _jsonOptions),
+                nameof(AccountUnfrozen) => JsonSerializer.Deserialize<AccountUnfrozen>(eventData, _jsonOptions),
                 _ => throw new InvalidOperationException($"Unknown event type: {eventType}")
             };
         }

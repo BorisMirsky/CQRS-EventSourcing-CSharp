@@ -15,11 +15,22 @@ namespace CQRS_EventSourcing_CSharp.Web.Controllers
     {
         private readonly OpenAccountHandler _openAccountHandler;
         private readonly DepositMoneyHandler _depositMoneyHandler;
+        private readonly WithdrawMoneyHandler _withdrawMoneyHandler;
+        private readonly FreezeAccountHandler _freezeAccountHandler;
+        private readonly UnfreezeAccountHandler _unfreezeAccountHandler;
 
-        public AccountController(OpenAccountHandler openAccountHandler, DepositMoneyHandler depositMoneyHandler)
+        public AccountController(
+        OpenAccountHandler openAccountHandler,
+        DepositMoneyHandler depositMoneyHandler,
+        WithdrawMoneyHandler withdrawMoneyHandler,
+        FreezeAccountHandler freezeAccountHandler,
+        UnfreezeAccountHandler unfreezeAccountHandler)
         {
             _openAccountHandler = openAccountHandler;
             _depositMoneyHandler = depositMoneyHandler;
+            _withdrawMoneyHandler = withdrawMoneyHandler;
+            _freezeAccountHandler = freezeAccountHandler;
+            _unfreezeAccountHandler = unfreezeAccountHandler;
         }
 
         [HttpPost("open")]
@@ -35,6 +46,7 @@ namespace CQRS_EventSourcing_CSharp.Web.Controllers
                 return BadRequest(new { error = ex.Message });
             }
         }
+
 
         [HttpPost("{accountId:guid}/deposit")]
         public async Task<IActionResult> Deposit(Guid accountId, [FromBody] DepositMoneyRequest request)
@@ -61,8 +73,91 @@ namespace CQRS_EventSourcing_CSharp.Web.Controllers
                 return StatusCode(500, new { error = ex.Message });
             }
         }
+    
+
+
+    [HttpPost("{accountId:guid}/withdraw")]
+    public async Task<IActionResult> Withdraw(Guid accountId, [FromBody] WithdrawMoneyRequest request)
+    {
+        try
+        {
+            var command = new WithdrawMoneyCommand
+            {
+                AccountId = accountId,
+                Amount = request.Amount,
+                Currency = request.Currency ?? "USD",
+                Description = request.Description ?? "Withdrawal"
+            };
+            await _withdrawMoneyHandler.Handle(command);
+            return Ok(new { message = "Withdrawal successful" });
+        }
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(new { error = ex.Message });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { error = ex.Message });
+        }
     }
 
+
+    [HttpPost("{accountId:guid}/freeze")]
+    public async Task<IActionResult> Freeze(Guid accountId, [FromBody] FreezeAccountRequest? request)
+    {
+        try
+        {
+            var command = new FreezeAccountCommand
+            {
+                AccountId = accountId,
+                Reason = request?.Reason ?? string.Empty
+            };
+            await _freezeAccountHandler.Handle(command);
+            return Ok(new { message = "Account frozen" });
+        }
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(new { error = ex.Message });
+        }
+    }
+
+    [HttpPost("{accountId:guid}/unfreeze")]
+    public async Task<IActionResult> Unfreeze(Guid accountId, [FromBody] UnfreezeAccountRequest? request)
+    {
+        try
+        {
+            var command = new UnfreezeAccountCommand
+            {
+                AccountId = accountId,
+                Reason = request?.Reason ?? string.Empty
+            };
+            await _unfreezeAccountHandler.Handle(command);
+            return Ok(new { message = "Account unfrozen" });
+        }
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(new { error = ex.Message });
+        }
+    }
+    }
+
+    // DTO классы для запросов (можно разместить внутри файла или вынести):
+    public class WithdrawMoneyRequest
+    {
+        public decimal Amount { get; set; }
+        public string? Currency { get; set; }
+        public string? Description { get; set; }
+    }
+
+    public class FreezeAccountRequest
+    {
+        public string? Reason { get; set; }
+    }
+
+    public class UnfreezeAccountRequest
+    {
+        public string? Reason { get; set; }
+    }
     public class DepositMoneyRequest
     {
         public decimal Amount { get; set; }
@@ -70,3 +165,4 @@ namespace CQRS_EventSourcing_CSharp.Web.Controllers
         public string? Description { get; set; }
     }
 }
+
