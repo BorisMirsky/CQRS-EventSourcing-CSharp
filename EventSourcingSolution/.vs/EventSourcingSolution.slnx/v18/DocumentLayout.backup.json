@@ -5,26 +5,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A796C035-F464-4923-98B6-9E619389C6D0}|src\\CQRS-EventSourcing-CSharp.Web\\CQRS-EventSourcing-CSharp.Web.csproj|c:\\users\\\u0431\u043E\u0440\u0438\u0441\\source\\cqrs-eventsourcing-csharp\\eventsourcingsolution\\src\\cqrs-eventsourcing-csharp.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A796C035-F464-4923-98B6-9E619389C6D0}|src\\CQRS-EventSourcing-CSharp.Web\\CQRS-EventSourcing-CSharp.Web.csproj|solutionrelative:src\\cqrs-eventsourcing-csharp.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A796C035-F464-4923-98B6-9E619389C6D0}|src\\CQRS-EventSourcing-CSharp.Web\\CQRS-EventSourcing-CSharp.Web.csproj|c:\\users\\\u0431\u043E\u0440\u0438\u0441\\source\\cqrs-eventsourcing-csharp\\eventsourcingsolution\\src\\cqrs-eventsourcing-csharp.web\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{A796C035-F464-4923-98B6-9E619389C6D0}|src\\CQRS-EventSourcing-CSharp.Web\\CQRS-EventSourcing-CSharp.Web.csproj|solutionrelative:src\\cqrs-eventsourcing-csharp.web\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A0F10B54-C071-4E6F-89F4-48F0489CD4B3}|src\\CQRS-EventSourcing-CSharp.DataAccess\\CQRS-EventSourcing-CSharp.DataAccess.csproj|c:\\users\\\u0431\u043E\u0440\u0438\u0441\\source\\cqrs-eventsourcing-csharp\\eventsourcingsolution\\src\\cqrs-eventsourcing-csharp.dataaccess\\eventstore\\dbschema.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A0F10B54-C071-4E6F-89F4-48F0489CD4B3}|src\\CQRS-EventSourcing-CSharp.DataAccess\\CQRS-EventSourcing-CSharp.DataAccess.csproj|solutionrelative:src\\cqrs-eventsourcing-csharp.dataaccess\\eventstore\\dbschema.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A0F10B54-C071-4E6F-89F4-48F0489CD4B3}|src\\CQRS-EventSourcing-CSharp.DataAccess\\CQRS-EventSourcing-CSharp.DataAccess.csproj|c:\\users\\\u0431\u043E\u0440\u0438\u0441\\source\\cqrs-eventsourcing-csharp\\eventsourcingsolution\\src\\cqrs-eventsourcing-csharp.dataaccess\\eventstore\\evententity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A0F10B54-C071-4E6F-89F4-48F0489CD4B3}|src\\CQRS-EventSourcing-CSharp.DataAccess\\CQRS-EventSourcing-CSharp.DataAccess.csproj|solutionrelative:src\\cqrs-eventsourcing-csharp.dataaccess\\eventstore\\evententity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A0F10B54-C071-4E6F-89F4-48F0489CD4B3}|src\\CQRS-EventSourcing-CSharp.DataAccess\\CQRS-EventSourcing-CSharp.DataAccess.csproj|c:\\users\\\u0431\u043E\u0440\u0438\u0441\\source\\cqrs-eventsourcing-csharp\\eventsourcingsolution\\src\\cqrs-eventsourcing-csharp.dataaccess\\eventstore\\sqliteeventstore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A0F10B54-C071-4E6F-89F4-48F0489CD4B3}|src\\CQRS-EventSourcing-CSharp.DataAccess\\CQRS-EventSourcing-CSharp.DataAccess.csproj|solutionrelative:src\\cqrs-eventsourcing-csharp.dataaccess\\eventstore\\sqliteeventstore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A796C035-F464-4923-98B6-9E619389C6D0}|src\\CQRS-EventSourcing-CSharp.Web\\CQRS-EventSourcing-CSharp.Web.csproj|c:\\users\\\u0431\u043E\u0440\u0438\u0441\\source\\cqrs-eventsourcing-csharp\\eventsourcingsolution\\src\\cqrs-eventsourcing-csharp.web\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A796C035-F464-4923-98B6-9E619389C6D0}|src\\CQRS-EventSourcing-CSharp.Web\\CQRS-EventSourcing-CSharp.Web.csproj|solutionrelative:src\\cqrs-eventsourcing-csharp.web\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,11 +14,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\\u0411\u043E\u0440\u0438\u0441\\source\\CQRS-EventSourcing-CSharp\\EventSourcingSolution\\src\\CQRS-EventSourcing-CSharp.Web\\Program.cs",
+              "RelativeDocumentMoniker": "src\\CQRS-EventSourcing-CSharp.Web\\Program.cs",
+              "ToolTip": "C:\\Users\\\u0411\u043E\u0440\u0438\u0441\\source\\CQRS-EventSourcing-CSharp\\EventSourcingSolution\\src\\CQRS-EventSourcing-CSharp.Web\\Program.cs",
+              "RelativeToolTip": "src\\CQRS-EventSourcing-CSharp.Web\\Program.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAC0AAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-25T17:07:26.948Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -51,84 +44,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "SqliteEventStore.cs",
-              "DocumentMoniker": "C:\\Users\\\u0411\u043E\u0440\u0438\u0441\\source\\CQRS-EventSourcing-CSharp\\EventSourcingSolution\\src\\CQRS-EventSourcing-CSharp.DataAccess\\EventStore\\SqliteEventStore.cs",
-              "RelativeDocumentMoniker": "src\\CQRS-EventSourcing-CSharp.DataAccess\\EventStore\\SqliteEventStore.cs",
-              "ToolTip": "C:\\Users\\\u0411\u043E\u0440\u0438\u0441\\source\\CQRS-EventSourcing-CSharp\\EventSourcingSolution\\src\\CQRS-EventSourcing-CSharp.DataAccess\\EventStore\\SqliteEventStore.cs",
-              "RelativeToolTip": "src\\CQRS-EventSourcing-CSharp.DataAccess\\EventStore\\SqliteEventStore.cs",
-              "ViewState": "AgIAAGwAAAAAAAAAAAA/wIIAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-16T05:25:07.315Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DbSchema.cs",
-              "DocumentMoniker": "C:\\Users\\\u0411\u043E\u0440\u0438\u0441\\source\\CQRS-EventSourcing-CSharp\\EventSourcingSolution\\src\\CQRS-EventSourcing-CSharp.DataAccess\\EventStore\\DbSchema.cs",
-              "RelativeDocumentMoniker": "src\\CQRS-EventSourcing-CSharp.DataAccess\\EventStore\\DbSchema.cs",
-              "ToolTip": "C:\\Users\\\u0411\u043E\u0440\u0438\u0441\\source\\CQRS-EventSourcing-CSharp\\EventSourcingSolution\\src\\CQRS-EventSourcing-CSharp.DataAccess\\EventStore\\DbSchema.cs",
-              "RelativeToolTip": "src\\CQRS-EventSourcing-CSharp.DataAccess\\EventStore\\DbSchema.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAowA0AAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-16T05:24:24.882Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "EventEntity.cs",
-              "DocumentMoniker": "C:\\Users\\\u0411\u043E\u0440\u0438\u0441\\source\\CQRS-EventSourcing-CSharp\\EventSourcingSolution\\src\\CQRS-EventSourcing-CSharp.DataAccess\\EventStore\\EventEntity.cs",
-              "RelativeDocumentMoniker": "src\\CQRS-EventSourcing-CSharp.DataAccess\\EventStore\\EventEntity.cs",
-              "ToolTip": "C:\\Users\\\u0411\u043E\u0440\u0438\u0441\\source\\CQRS-EventSourcing-CSharp\\EventSourcingSolution\\src\\CQRS-EventSourcing-CSharp.DataAccess\\EventStore\\EventEntity.cs",
-              "RelativeToolTip": "src\\CQRS-EventSourcing-CSharp.DataAccess\\EventStore\\EventEntity.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-16T05:23:49.512Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\\u0411\u043E\u0440\u0438\u0441\\source\\CQRS-EventSourcing-CSharp\\EventSourcingSolution\\src\\CQRS-EventSourcing-CSharp.Web\\appsettings.json",
-              "RelativeDocumentMoniker": "src\\CQRS-EventSourcing-CSharp.Web\\appsettings.json",
-              "ToolTip": "C:\\Users\\\u0411\u043E\u0440\u0438\u0441\\source\\CQRS-EventSourcing-CSharp\\EventSourcingSolution\\src\\CQRS-EventSourcing-CSharp.Web\\appsettings.json",
-              "RelativeToolTip": "src\\CQRS-EventSourcing-CSharp.Web\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABrAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-05-16T05:09:34.889Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\\u0411\u043E\u0440\u0438\u0441\\source\\CQRS-EventSourcing-CSharp\\EventSourcingSolution\\src\\CQRS-EventSourcing-CSharp.Web\\Program.cs",
-              "RelativeDocumentMoniker": "src\\CQRS-EventSourcing-CSharp.Web\\Program.cs",
-              "ToolTip": "C:\\Users\\\u0411\u043E\u0440\u0438\u0441\\source\\CQRS-EventSourcing-CSharp\\EventSourcingSolution\\src\\CQRS-EventSourcing-CSharp.Web\\Program.cs",
-              "RelativeToolTip": "src\\CQRS-EventSourcing-CSharp.Web\\Program.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAACYAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-16T05:08:14.203Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "C:\\Users\\\u0411\u043E\u0440\u0438\u0441\\source\\CQRS-EventSourcing-CSharp\\EventSourcingSolution\\src\\CQRS-EventSourcing-CSharp.Web\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "src\\CQRS-EventSourcing-CSharp.Web\\Controllers\\AccountController.cs",
-              "ToolTip": "C:\\Users\\\u0411\u043E\u0440\u0438\u0441\\source\\CQRS-EventSourcing-CSharp\\EventSourcingSolution\\src\\CQRS-EventSourcing-CSharp.Web\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "src\\CQRS-EventSourcing-CSharp.Web\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-16T05:07:07.219Z",
-              "EditorCaption": ""
             }
           ]
         }
