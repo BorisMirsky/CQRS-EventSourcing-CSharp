@@ -15,7 +15,6 @@
   <ItemGroup>
     <Folder Include="DataBase\" />
     <Folder Include="Projections\" />
-    <Folder Include="ReadModel\" />
   </ItemGroup>
 
   <ItemGroup>

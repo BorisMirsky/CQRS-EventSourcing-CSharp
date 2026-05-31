@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using CQRS_EventSourcing_CSharp.Application.CommandHandlers;
 using CQRS_EventSourcing_CSharp.Application.Commands;
-using CQRS_EventSourcing_CSharp.Application.CommandHandlers;
+using CQRS_EventSourcing_CSharp.Application.Queries;
+using CQRS_EventSourcing_CSharp.Application.QueryHandlers;
 using CQRS_EventSourcing_CSharp.Web.DTO;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 
 
@@ -19,19 +21,29 @@ namespace CQRS_EventSourcing_CSharp.Web.Controllers
         private readonly WithdrawMoneyHandler _withdrawMoneyHandler;
         private readonly FreezeAccountHandler _freezeAccountHandler;
         private readonly UnfreezeAccountHandler _unfreezeAccountHandler;
+        private readonly GetBalanceHandler _getBalanceHandler;
+        private readonly GetBalanceOnDateHandler _getBalanceOnDateHandler;
+        private readonly GetTransactionHistoryHandler _getTransactionHistoryHandler;
+        //private readonly CancellationToken cancellationToken;
 
         public AccountController(
-        OpenAccountHandler openAccountHandler,
-        DepositMoneyHandler depositMoneyHandler,
-        WithdrawMoneyHandler withdrawMoneyHandler,
-        FreezeAccountHandler freezeAccountHandler,
-        UnfreezeAccountHandler unfreezeAccountHandler)
+            OpenAccountHandler openAccountHandler,
+            DepositMoneyHandler depositMoneyHandler,
+            WithdrawMoneyHandler withdrawMoneyHandler,
+            FreezeAccountHandler freezeAccountHandler,
+            UnfreezeAccountHandler unfreezeAccountHandler,
+            GetBalanceHandler getBalanceHandler,
+            GetBalanceOnDateHandler getBalanceOnDateHandler,
+            GetTransactionHistoryHandler getTransactionHistoryHandler)
         {
             _openAccountHandler = openAccountHandler;
             _depositMoneyHandler = depositMoneyHandler;
             _withdrawMoneyHandler = withdrawMoneyHandler;
             _freezeAccountHandler = freezeAccountHandler;
             _unfreezeAccountHandler = unfreezeAccountHandler;
+            _getBalanceHandler = getBalanceHandler;
+            _getBalanceOnDateHandler = getBalanceOnDateHandler;
+            _getTransactionHistoryHandler = getTransactionHistoryHandler;
         }
 
         [HttpPost("open")]
@@ -39,7 +51,7 @@ namespace CQRS_EventSourcing_CSharp.Web.Controllers
         {
             try
             {
-                await _openAccountHandler.Handle(command);
+                await _openAccountHandler.Handle(command, CancellationToken.None);
                 return Ok(new { message = "Account opened successfully" });
             }
             catch (Exception ex)
@@ -74,7 +86,6 @@ namespace CQRS_EventSourcing_CSharp.Web.Controllers
                 return StatusCode(500, new { error = ex.Message });
             }
         }
-    
 
 
         [HttpPost("{accountId:guid}/withdraw")]
@@ -89,7 +100,7 @@ namespace CQRS_EventSourcing_CSharp.Web.Controllers
                     Currency = request.Currency ?? "USD",
                     Description = request.Description ?? "Withdrawal"
                 };
-                await _withdrawMoneyHandler.Handle(command);
+                await _withdrawMoneyHandler.Handle(command, CancellationToken.None);
                 return Ok(new { message = "Withdrawal successful" });
             }
             catch (InvalidOperationException ex)
@@ -113,7 +124,7 @@ namespace CQRS_EventSourcing_CSharp.Web.Controllers
                     AccountId = accountId,
                     Reason = request?.Reason ?? string.Empty
                 };
-                await _freezeAccountHandler.Handle(command);
+                await _freezeAccountHandler.Handle(command, CancellationToken.None);
                 return Ok(new { message = "Account frozen" });
             }
             catch (InvalidOperationException ex)
@@ -121,6 +132,7 @@ namespace CQRS_EventSourcing_CSharp.Web.Controllers
                 return BadRequest(new { error = ex.Message });
             }
         }
+
 
         [HttpPost("{accountId:guid}/unfreeze")]
         public async Task<IActionResult> Unfreeze(Guid accountId, [FromBody] UnfreezeAccountRequest? request)
@@ -132,7 +144,7 @@ namespace CQRS_EventSourcing_CSharp.Web.Controllers
                     AccountId = accountId,
                     Reason = request?.Reason ?? string.Empty
                 };
-                await _unfreezeAccountHandler.Handle(command);
+                await _unfreezeAccountHandler.Handle(command, CancellationToken.None);
                 return Ok(new { message = "Account unfrozen" });
             }
             catch (InvalidOperationException ex)
@@ -140,6 +152,38 @@ namespace CQRS_EventSourcing_CSharp.Web.Controllers
                 return BadRequest(new { error = ex.Message });
             }
         }
+
+
+        [HttpGet("{accountId:guid}/balance")]
+        public async Task<IActionResult> GetBalance(Guid accountId)
+        {
+            var query = new GetBalanceQuery { AccountId = accountId };
+            var result = await _getBalanceHandler.Handle(query, CancellationToken.None);
+            if (result == null)
+                return NotFound(new { error = "Account not found" });
+            return Ok(result);
         }
+
+
+        [HttpGet("{accountId:guid}/history")]
+        public async Task<IActionResult> GetHistory(Guid accountId)
+        {
+            var query = new GetTransactionHistoryQuery { AccountId = accountId };
+            var result = await _getTransactionHistoryHandler.Handle(query, CancellationToken.None);
+            return Ok(result);
+        }
+
+
+        [HttpGet("{accountId:guid}/balance-at-date")]
+        public async Task<IActionResult> GetBalanceOnDate(Guid accountId, [FromQuery] DateTime date)
+        {
+            var query = new GetBalanceOnDateQuery { AccountId = accountId, Date = date };
+            var balance = await _getBalanceOnDateHandler.Handle(query, CancellationToken.None);
+            if (balance == null)
+                return NotFound(new { error = "No events found for this account before the date" });
+            return Ok(new { accountId, balanceAmount = balance.Amount, currency = balance.Currency, asOfDate = date });
+        }
+
+    }
 }
 

@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using CQRS_EventSourcing_CSharp.Application.Abstractions;
 using CQRS_EventSourcing_CSharp.Application.Commands;
 using CQRS_EventSourcing_CSharp.Application.Common;
 using CQRS_EventSourcing_CSharp.Domain.Aggregates;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 
 
@@ -12,19 +13,22 @@ namespace CQRS_EventSourcing_CSharp.Application.CommandHandlers
     public class OpenAccountHandler : ICommandHandler<OpenAccountCommand>
     {
         private readonly IEventStore _eventStore;
+        private readonly IReadModelRepository _readModelRepository;
 
-        public OpenAccountHandler(IEventStore eventStore)
+        public OpenAccountHandler(IEventStore eventStore, IReadModelRepository readModelRepository)
         {
             _eventStore = eventStore;
+            _readModelRepository = readModelRepository;
         }
 
-        public async Task Handle(OpenAccountCommand command, CancellationToken cancellationToken = default)
+        public async Task Handle(OpenAccountCommand command, CancellationToken cancellationToken)
         {
-            // Создаём агрегат
             var account = BankAccount.Open(command.OwnerName, command.Currency);
-
-            // Сохраняем события
             await _eventStore.SaveEventsAsync(account.Id, account.GetUncommittedEvents(), cancellationToken);
+
+            // Инициализация read-модели
+            await _readModelRepository.UpdateAccountBalance(account.Id, account.Balance, account.IsFrozen, account.Version, cancellationToken);
+            // Нет истории транзакций при открытии (или добавить событие открытия как транзакцию)
 
             account.ClearUncommittedEvents();
         }

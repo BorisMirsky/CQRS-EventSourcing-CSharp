@@ -1,6 +1,9 @@
+using CQRS_EventSourcing_CSharp.Application.Abstractions;
 using CQRS_EventSourcing_CSharp.Application.CommandHandlers;
 using CQRS_EventSourcing_CSharp.Application.Common;
+using CQRS_EventSourcing_CSharp.Application.QueryHandlers;
 using CQRS_EventSourcing_CSharp.DataAccess.EventStore;
+using CQRS_EventSourcing_CSharp.DataAccess.ReadModel;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -20,6 +23,11 @@ builder.Services.AddScoped<UnfreezeAccountHandler>();
 builder.Services.AddSingleton<IEventStore>(sp => new SqliteEventStore(connection));
 builder.Services.AddScoped<OpenAccountHandler>();
 builder.Services.AddScoped<DepositMoneyHandler>();
+
+builder.Services.AddScoped<GetBalanceHandler>();
+builder.Services.AddScoped<GetTransactionHistoryHandler>();
+builder.Services.AddScoped<GetBalanceOnDateHandler>();
+builder.Services.AddSingleton<IReadModelRepository>(sp => new SqliteReadModelRepository(connection));
 
 
 
