@@ -25,11 +25,9 @@ namespace CQRS_EventSourcing_CSharp.Application.CommandHandlers
         {
             var account = BankAccount.Open(command.OwnerName, command.Currency);
             await _eventStore.SaveEventsAsync(account.Id, account.GetUncommittedEvents(), cancellationToken);
-
             // Инициализация read-модели
             await _readModelRepository.UpdateAccountBalance(account.Id, account.Balance, account.IsFrozen, account.Version, cancellationToken);
             // Нет истории транзакций при открытии (или добавить событие открытия как транзакцию)
-
             account.ClearUncommittedEvents();
         }
     }
