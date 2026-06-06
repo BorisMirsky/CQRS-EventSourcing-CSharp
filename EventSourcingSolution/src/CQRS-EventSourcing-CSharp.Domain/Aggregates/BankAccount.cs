@@ -10,6 +10,7 @@ namespace CQRS_EventSourcing_CSharp.Domain.Aggregates
 {
     public class BankAccount
     {
+
         private readonly List<IEvent> _uncommittedEvents = new();
         public Guid Id { get; private set; }
         public Money Balance { get; private set; }
@@ -17,10 +18,12 @@ namespace CQRS_EventSourcing_CSharp.Domain.Aggregates
         public bool IsFrozen { get; private set; }
         public int Version { get; private set; } = -1; // -1 означает, что агрегат новый (нет событий)
 
+
         // Для восстановления из событий
         public BankAccount()
         {
         }
+
 
         // Создание нового счёта
         public static BankAccount Open(string ownerName, string currency, Guid? accountId = null)
@@ -57,6 +60,7 @@ namespace CQRS_EventSourcing_CSharp.Domain.Aggregates
             _uncommittedEvents.Add(@event);
         }
 
+
         // Применение события к агрегату (восстановление состояния)
         private void Apply(AccountOpened @event)
         {
@@ -66,17 +70,21 @@ namespace CQRS_EventSourcing_CSharp.Domain.Aggregates
             Version++;
         }
 
+
         private void Apply(MoneyDeposited @event)
         {
             Balance = Balance.Add(new Money(@event.Amount, @event.Currency));
             Version++;
         }
 
+
         // Получить неприменённые события
         public IReadOnlyList<IEvent> GetUncommittedEvents() => _uncommittedEvents.AsReadOnly();
 
+
         // Очистить неприменённые события (после сохранения)
         public void ClearUncommittedEvents() => _uncommittedEvents.Clear();
+
 
         // Загрузка истории событий из EventStore
         public void LoadFromHistory(IEnumerable<IEvent> events)
@@ -86,9 +94,7 @@ namespace CQRS_EventSourcing_CSharp.Domain.Aggregates
                 ApplyDynamic(@event);
             }
         }
-
-
-        
+  
 
         private void ApplyDynamic(IEvent @event)
         {
@@ -114,6 +120,7 @@ namespace CQRS_EventSourcing_CSharp.Domain.Aggregates
             }
         }
 
+
         public void Withdraw(decimal amount, string currency, string description)
         {
             if (IsFrozen)
@@ -138,6 +145,7 @@ namespace CQRS_EventSourcing_CSharp.Domain.Aggregates
             _uncommittedEvents.Add(@event);
         }
 
+
         public void Freeze(string reason)
         {
             if (IsFrozen)
@@ -147,6 +155,7 @@ namespace CQRS_EventSourcing_CSharp.Domain.Aggregates
             Apply(@event);
             _uncommittedEvents.Add(@event);
         }
+
 
         public void Unfreeze(string reason)
         {
@@ -158,11 +167,13 @@ namespace CQRS_EventSourcing_CSharp.Domain.Aggregates
             _uncommittedEvents.Add(@event);
         }
 
+
         private void Apply(MoneyWithdrawn @event)
         {
             Balance = Balance.Subtract(new Money(@event.Amount, @event.Currency));
             Version++;
         }
+
 
         private void Apply(AccountFrozen @event)
         {
@@ -170,10 +181,35 @@ namespace CQRS_EventSourcing_CSharp.Domain.Aggregates
             Version++;
         }
 
+
         private void Apply(AccountUnfrozen @event)
         {
             IsFrozen = false;
             Version++;
+        }
+
+
+        public BankAccountSnapshot GetSnapshot()
+        {
+            return new BankAccountSnapshot
+            {
+                Id = this.Id,
+                BalanceAmount = this.Balance.Amount,
+                Currency = this.Balance.Currency,
+                OwnerName = this.OwnerName,
+                IsFrozen = this.IsFrozen,
+                Version = this.Version
+            };
+        }
+
+
+        public void LoadFromSnapshot(BankAccountSnapshot snapshot)
+        {
+            this.Id = snapshot.Id;
+            this.Balance = new Money(snapshot.BalanceAmount, snapshot.Currency);
+            this.OwnerName = snapshot.OwnerName;
+            this.IsFrozen = snapshot.IsFrozen;
+            this.Version = snapshot.Version;
         }
 
 
