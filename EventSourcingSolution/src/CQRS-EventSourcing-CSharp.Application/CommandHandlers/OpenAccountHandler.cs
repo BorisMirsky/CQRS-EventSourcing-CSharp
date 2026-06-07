@@ -2,9 +2,6 @@
 using CQRS_EventSourcing_CSharp.Application.Commands;
 using CQRS_EventSourcing_CSharp.Application.Common;
 using CQRS_EventSourcing_CSharp.Domain.Aggregates;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 
 

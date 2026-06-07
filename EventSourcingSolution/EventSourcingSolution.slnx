@@ -5,4 +5,5 @@
     <Project Path="src/CQRS-EventSourcing-CSharp.Domain/CQRS-EventSourcing-CSharp.Domain.csproj" />
     <Project Path="src/CQRS-EventSourcing-CSharp.Web/CQRS-EventSourcing-CSharp.Web.csproj" Id="a796c035-f464-4923-98b6-9e619389c6d0" />
   </Folder>
+  <Project Path="EventSourcingSolution.Tests/EventSourcingSolution.Tests.csproj" />
 </Solution>

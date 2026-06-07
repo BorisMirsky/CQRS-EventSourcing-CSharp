@@ -1,9 +1,5 @@
-﻿
-using CQRS_EventSourcing_CSharp.Domain.ValueObjects;
+﻿using CQRS_EventSourcing_CSharp.Domain.ValueObjects;
 using CQRS_EventSourcing_CSharp.Domain.Events;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 
 namespace CQRS_EventSourcing_CSharp.Domain.Aggregates
@@ -22,6 +18,7 @@ namespace CQRS_EventSourcing_CSharp.Domain.Aggregates
         // Для восстановления из событий
         public BankAccount()
         {
+            Balance = new Money(0, "USD");
         }
 
 
@@ -211,7 +208,5 @@ namespace CQRS_EventSourcing_CSharp.Domain.Aggregates
             this.IsFrozen = snapshot.IsFrozen;
             this.Version = snapshot.Version;
         }
-
-
     }
 }
