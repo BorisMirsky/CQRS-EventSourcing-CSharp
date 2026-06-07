@@ -21,19 +21,12 @@ namespace CQRS_EventSourcing_CSharp.Application.CommandHandlers
 
         public async Task Handle(WithdrawMoneyCommand command, CancellationToken cancellationToken)
         {
-            //var events = await _eventStore.LoadEventsAsync(command.AccountId, cancellationToken);
-            //var account = new BankAccount();
-            //account.LoadFromHistory(events);
             var account = await _eventStore.LoadAggregateAsync(command.AccountId, cancellationToken);
-
             account.Withdraw(command.Amount, command.Currency, command.Description);
-
             await _eventStore.SaveEventsAsync(account.Id, account.GetUncommittedEvents(), cancellationToken);
-
             await _readModelRepository.UpdateAccountBalance(account.Id, account.Balance, account.IsFrozen, account.Version, cancellationToken);
             var transactionId = Guid.NewGuid();
             await _readModelRepository.AddTransactionHistory(transactionId, account.Id, "Withdrawal", new Money(command.Amount, command.Currency), account.Balance, command.Description, DateTime.UtcNow, cancellationToken);
-
             account.ClearUncommittedEvents();
         }
     }

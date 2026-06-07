@@ -20,25 +20,14 @@ namespace CQRS_EventSourcing_CSharp.Application.CommandHandlers
 
         public async Task Handle(DepositMoneyCommand command, CancellationToken cancellationToken = default)
         {
-            //var events = await _eventStore.LoadEventsAsync(command.AccountId, cancellationToken);
-            //
             var account = await _eventStore.LoadAggregateAsync(command.AccountId, cancellationToken);
-            //account.Deposit(command.Amount, command.Currency, command.Description);
-            //await _eventStore.SaveEventsAsync(account.Id, account.GetUncommittedEvents(), cancellationToken);
-            //
-            //var account = new BankAccount();
-            //account.LoadFromHistory(events);
-
             account.Deposit(command.Amount, command.Currency, command.Description);
-
             await _eventStore.SaveEventsAsync(account.Id, account.GetUncommittedEvents(), cancellationToken);
-
             // Обновление read-модели
             await _readModelRepository.UpdateAccountBalance(account.Id, account.Balance, account.IsFrozen, account.Version, cancellationToken);
             // Добавляем запись в историю (генерируем transactionId)
             var transactionId = Guid.NewGuid();
             await _readModelRepository.AddTransactionHistory(transactionId, account.Id, "Deposit", new Money(command.Amount, command.Currency), account.Balance, command.Description, DateTime.UtcNow, cancellationToken);
-
             account.ClearUncommittedEvents();
         }
     }
